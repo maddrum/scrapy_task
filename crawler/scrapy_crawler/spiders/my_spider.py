@@ -1,6 +1,17 @@
 import scrapy
 import re
 import datetime
+import sqlite3
+import os
+
+# get the database
+database_path = os.path.dirname(__file__)
+database_path = os.path.dirname(database_path)
+database_path = os.path.dirname(database_path)
+database_path = os.path.dirname(database_path)
+database_path = os.path.join(database_path, 'django_scrapy_task', 'db.sqlite3')
+# connect to database
+conn = sqlite3.connect(database_path)
 
 
 class PigsSpider(scrapy.Spider):
