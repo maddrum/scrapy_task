@@ -1,0 +1,372 @@
+[
+  {
+    "name": "ЦВЕТА ВЪЛЧЕВА КАРАЯНЧЕВА",
+    "avatar": "https://parliament.bg/images/Assembly/2797.png",
+    "country_of_birth": "България",
+    "place_of_birth": "с. Болярово",
+    "date_of_birth": "1968-02-25",
+    "languages": [
+      "руски"
+    ],
+    "job": "инженер",
+    "political_party": "ПП ГЕРБ",
+    "email": "tsveta.karayancheva@parliament.bg"
+  },
+  {
+    "name": "ВЕЖДИ ЛЕТИФ РАШИДОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2835.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Димитровград",
+    "date_of_birth": "1951-12-14",
+    "languages": [
+      "френски",
+      "руски",
+      "турски",
+      "чешки"
+    ],
+    "job": "художник",
+    "political_party": "ПП ГЕРБ",
+    "email": "vezhdi.rashidov@parliament.bg"
+  },
+  {
+    "name": "ВЕЛИСЛАВА ИВАНОВА КРЪСТЕВА",
+    "avatar": "https://parliament.bg/images/Assembly/2830.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Плевен",
+    "date_of_birth": "1967-09-02",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "журналист политолог",
+    "political_party": "Движение за права и свободи - ДПС",
+    "email": "velislava.krasteva@parliament.bg"
+  },
+  {
+    "name": "ВАСИЛ ЦВЕТКОВ ЦВЕТКОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2708.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Елин Пелин",
+    "date_of_birth": "1986-06-24",
+    "languages": [
+      "английски"
+    ],
+    "job": "инженер",
+    "political_party": "ПП ГЕРБ",
+    "email": "vasil.tsvetkov@parliament.bg"
+  },
+  {
+    "name": "ВАЛЕНТИН МИРЧОВ МИЛУШЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2704.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Самоков",
+    "date_of_birth": "1966-03-15",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "преподавател",
+    "political_party": "ПП ГЕРБ",
+    "email": "valentin.milushev@parliament.bg"
+  },
+  {
+    "name": "ВАСИЛ МИЛАНОВ АНТОНОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2826.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Монтана",
+    "date_of_birth": "1956-01-01",
+    "languages": [
+      "руски"
+    ],
+    "job": "икономист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "vasil.antonov@parliament.bg"
+  },
+  {
+    "name": "ВАЛЕНТИНА АЛЕКСАНДРОВА НАЙДЕНОВА",
+    "avatar": "https://parliament.bg/images/Assembly/2871.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Троян",
+    "date_of_birth": "1958-02-13",
+    "languages": [
+      "немски",
+      "руски"
+    ],
+    "job": "лекар",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "valentina.naydenova@parliament.bg"
+  },
+  {
+    "name": "ВАЛЕНТИН ИВАНОВ РАДЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2685.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Елин Пелин",
+    "date_of_birth": "1958-02-06",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "инженер икономист",
+    "political_party": "ПП ГЕРБ",
+    "email": "valentin.radev@parliament.bg"
+  },
+  {
+    "name": "ЯВОР РУМЕНОВ БОЖАНКОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2773.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Горна Оряховица",
+    "date_of_birth": "1990-02-11",
+    "languages": [
+      "английски"
+    ],
+    "job": "юрист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "yavor.bozhankov@parliament.bg"
+  },
+  {
+    "name": "БОРИСЛАВ ИВАНОВ БОРИСОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2681.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Ямбол",
+    "date_of_birth": "1972-02-11",
+    "languages": [
+      "английски"
+    ],
+    "job": "фармацевт",
+    "political_party": "ПП ГЕРБ",
+    "email": "borislav.borisov@parliament.bg"
+  },
+  {
+    "name": "ВАЛЕНТИН ГЕОРГИЕВ ЛАМБЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2772.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Свищов",
+    "date_of_birth": "1977-03-23",
+    "languages": [
+      "английски"
+    ],
+    "job": "икономист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "valentin.lambev@parliament.bg"
+  },
+  {
+    "name": "ВАЛЕНТИН АЛЕКСИЕВ НИКОЛОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2670.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Габрово",
+    "date_of_birth": "1971-08-09",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "икономист инженер",
+    "political_party": "ПП ГЕРБ",
+    "email": "valentin.a.nikolov@parliament.bg"
+  },
+  {
+    "name": "БОРЯНА ЛЮБЕНОВА ГЕОРГИЕВА",
+    "avatar": "https://parliament.bg/images/Assembly/2679.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Варна",
+    "date_of_birth": "1987-09-16",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "икономист",
+    "political_party": "ВОЛЯ",
+    "email": "boryana.georgieva@parliament.bg"
+  },
+  {
+    "name": "ЮЛИЯН МИХАЙЛОВ ПАПАШИМОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2652.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Ямбол",
+    "date_of_birth": "1957-08-28",
+    "languages": [
+      "руски"
+    ],
+    "job": "лекар",
+    "political_party": "ПП ГЕРБ",
+    "email": "yuliyan.papashimov@parliament.bg"
+  },
+  {
+    "name": "ХРИСТО ГЕОРГИЕВ ГАДЖЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2693.png",
+    "country_of_birth": "България",
+    "place_of_birth": "София",
+    "date_of_birth": "1983-05-28",
+    "languages": [
+      "английски",
+      "френски",
+      "руски"
+    ],
+    "job": "икономист",
+    "political_party": "ПП ГЕРБ",
+    "email": "hristo.gadzhev@parliament.bg"
+  },
+  {
+    "name": "ХРИСТО ТАНЧЕВ ПРОДАНОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2673.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Панагюрище",
+    "date_of_birth": "1977-03-24",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "икономист инженер",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "hristo.prodanov@parliament.bg"
+  },
+  {
+    "name": "ЧАВДАР ЙОРДАНОВ ВЕЛИНОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2828.png",
+    "country_of_birth": "България",
+    "place_of_birth": "с. Долни Вадин",
+    "date_of_birth": "1946-07-18",
+    "languages": [
+      "руски",
+      "румънски"
+    ],
+    "job": "No data",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "chavdar.velinov@parliament.bg"
+  },
+  {
+    "name": "ЦВЕТАН БОРИСОВ ТОПЧИЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2779.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Видин",
+    "date_of_birth": "1967-04-24",
+    "languages": [
+      "руски",
+      "румънски"
+    ],
+    "job": "лекар",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "tsvetan.topchiev@parliament.bg"
+  },
+  {
+    "name": "ХАСАН АХМЕД АДЕМОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2796.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Исперих",
+    "date_of_birth": "1953-01-24",
+    "languages": [
+      "английски",
+      "турски"
+    ],
+    "job": "лекар",
+    "political_party": "Движение за права и свободи - ДПС",
+    "email": "h.ademov@parliament.bg"
+  },
+  {
+    "name": "ХРИСТИАН РАДЕВ МИТЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2751.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Стара Загора",
+    "date_of_birth": "1980-01-07",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "юрист",
+    "political_party": "ОБЕДИНЕНИ ПАТРИОТИ - НФСБ, АТАКА и ВМРО",
+    "email": "hristian.mitev@parliament.bg"
+  },
+  {
+    "name": "ЮЛИАН КРЪСТЕВ АНГЕЛОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2690.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Русе",
+    "date_of_birth": "1975-05-05",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "икономист",
+    "political_party": "ОБЕДИНЕНИ ПАТРИОТИ - НФСБ, АТАКА и ВМРО",
+    "email": "yulian.angelov@parliament.bg"
+  },
+  {
+    "name": "ХАЙРИ РЕДЖЕБОВ САДЪКОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2663.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Златарица",
+    "date_of_birth": "1970-12-18",
+    "languages": [
+      "руски"
+    ],
+    "job": "икономист",
+    "political_party": "Движение за права и свободи - ДПС",
+    "email": "hayri.sadakov@parliament.bg"
+  },
+  {
+    "name": "ТОДОР БАЙЧЕВ БАЙЧЕВ",
+    "avatar": "https://parliament.bg/images/Assembly/2749.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Карнобат",
+    "date_of_birth": "1973-04-11",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "юрист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "todor.baychev@parliament.bg"
+  },
+  {
+    "name": "ТОМА НИКОЛОВ ТОМОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2734.png",
+    "country_of_birth": "България",
+    "place_of_birth": "София",
+    "date_of_birth": "1942-05-20",
+    "languages": [
+      "английски",
+      "руски"
+    ],
+    "job": "журналист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "toma.tomov@parliament.bg"
+  },
+  {
+    "name": "ТЕОДОРА РАДКОВА ГЕОРГИЕВА",
+    "avatar": "https://parliament.bg/images/Assembly/2669.png",
+    "country_of_birth": "България",
+    "place_of_birth": "София",
+    "date_of_birth": "1978-10-10",
+    "languages": [
+      "английски"
+    ],
+    "job": "икономист",
+    "political_party": "ПП ГЕРБ",
+    "email": "teodora.georgieva@parliament.bg"
+  },
+  {
+    "name": "ТЕОДОРА АТАНАСОВА ХАЛАЧЕВА",
+    "avatar": "https://parliament.bg/images/Assembly/2839.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Пловдив",
+    "date_of_birth": "1991-10-27",
+    "languages": [
+      "английски"
+    ],
+    "job": "мениджър политолог",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "teodora.halacheva@parliament.bg"
+  },
+  {
+    "name": "ФИЛИП СТЕФАНОВ ПОПОВ",
+    "avatar": "https://parliament.bg/images/Assembly/2780.png",
+    "country_of_birth": "България",
+    "place_of_birth": "Видин",
+    "date_of_birth": "1982-01-16",
+    "languages": [
+      "английски"
+    ],
+    "job": "юрист",
+    "political_party": "БСП за БЪЛГАРИЯ",
+    "email": "phillip.popov@parliament.bg"
+  }
+]

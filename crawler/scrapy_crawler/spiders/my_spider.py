@@ -1,0 +1,85 @@
+import scrapy
+import re
+import datetime
+
+
+class PigsSpider(scrapy.Spider):
+    name = 'pigs'
+    start_urls = [
+        'https://parliament.bg/bg/MP/',
+    ]
+
+    def parse(self, response, **kwargs):
+        sub_info = response.css('.MPBlock > div > div > a')
+        yield from response.follow_all(sub_info, self.parse_pig)
+
+    def parse_pig(self, response):
+        """Returns:
+        {
+            'name': Full name /string/,
+            'avatar': Picture URL /string/,
+            'country_of_birth': Country of birth /string/,
+            'place_of_birth': Place of birth /string/,
+            'date_of_birth': Date of birth /datetime MM-DD-YYYY/,
+            'languages': Languages /list of strings/,
+            'job': Job /string/,
+            'political_party: Elected from political party /string/
+            'email': E-Mail /email/,
+        }
+        """
+        # get the name
+        raw_name_string = str(response.css('.MProwD').get())
+        name_pattern = r'</?(\w+| |=|\")+>+'
+        processed_name = re.sub(name_pattern, '', raw_name_string).strip()
+        # get avatar url
+        try:
+            avatar_address = 'https://parliament.bg' + response.css('.MPBlock_columns2 > img::attr(src)').get()
+        except:
+            avatar_address = 'No data'
+        # initial information cleanup
+        info_raw = str(response.css('.frontList').get())
+        info_raw = info_raw.replace('</li>', '')
+        info_raw = info_raw.replace('</ul>', '')
+        info_raw = info_raw.split('<li>')
+        info_raw = info_raw[1:]
+        if len(info_raw) == 0:
+            return
+        # checks for language and job listed and fill in
+        if not info_raw[1].split(':')[0].strip() == 'Професия':
+            info_raw.insert(1, 'No data')
+        if not info_raw[2].split(':')[0].strip() == 'Езици':
+            info_raw.insert(2, [])
+        # place and date of birth
+        place_of_birth_raw = info_raw[0].split(':')[-1].split(',')
+        country_of_birth = place_of_birth_raw[-1].strip()
+        place_and_date_of_birth = place_of_birth_raw[0].strip()
+        # using re to get the date and and the place
+        date_regex = r'\d{2}\/\d{2}\/\d{4}'
+        date_of_birth_str = re.search(date_regex, place_and_date_of_birth).group(0)
+        place_of_birth = re.sub(date_regex, '', place_and_date_of_birth).strip()
+        date_of_birth = datetime.datetime.strptime(date_of_birth_str, '%d/%m/%Y').date()
+        # job
+        job = info_raw[1].split(':')[-1].replace(';', ' ').strip()
+        # languages
+        languages = info_raw[2].split(':')[-1].replace(';', ',').strip()
+        if languages[-1] == ',':
+            languages = languages[:-1]
+        languages = languages.split(",")
+        # election party
+        elected_from = info_raw[3].split(':')[-1]
+        elected_from = elected_from.replace(';', '').strip()
+        percentage_regex = r'\d\d?.\d{2}%'
+        elected_from = re.sub(percentage_regex, '', elected_from).strip()
+        # email
+        email = info_raw[-1].split('mailto:')[1].split("\"")[0].strip()
+        yield {
+            'name': processed_name,
+            'avatar': avatar_address,
+            'country_of_birth': country_of_birth,
+            'place_of_birth': place_of_birth,
+            'date_of_birth': date_of_birth,
+            'languages': languages,
+            'job': job,
+            'political_party': elected_from,
+            'email': email,
+        }
