@@ -59,7 +59,7 @@ class PigsSpider(scrapy.Spider):
         if not info_raw[1].split(':')[0].strip() == 'Професия':
             info_raw.insert(1, 'No data')
         if not info_raw[2].split(':')[0].strip() == 'Езици':
-            info_raw.insert(2, [])
+            info_raw.insert(2, 'No data')
         # place and date of birth
         place_of_birth_raw = info_raw[0].split(':')[-1].split(',')
         country_of_birth = place_of_birth_raw[-1].strip()
@@ -83,7 +83,8 @@ class PigsSpider(scrapy.Spider):
         elected_from = re.sub(percentage_regex, '', elected_from).strip()
         # email
         email = info_raw[-1].split('mailto:')[1].split("\"")[0].strip()
-        yield {
+        # result data
+        result_data = {
             'name': processed_name,
             'avatar': avatar_address,
             'country_of_birth': country_of_birth,
@@ -94,3 +95,40 @@ class PigsSpider(scrapy.Spider):
             'political_party': elected_from,
             'email': email,
         }
+        self.popup_database(result_data)
+        yield result_data
+
+    def popup_database(self, crawl_data):
+        # check if already crawled and skip writing the record
+        check_database = conn.execute(f"SELECT name FROM crawler_app_scrapeddata WHERE name='{crawl_data['name']}'")
+        if check_database.fetchone():
+            print(f"[NOTIFICATION] {crawl_data['name']} already scraped, skipping this record...")
+            return
+        execution_command = f"INSERT INTO crawler_app_scrapeddata (" \
+                            f"name, " \
+                            f"avatar, " \
+                            f"country_of_birth, " \
+                            f"place_of_birth, " \
+                            f"date_of_birth, " \
+                            f"job, " \
+                            f"languages, " \
+                            f"political_party, " \
+                            f"email, " \
+                            f"created_on, " \
+                            f"edited_on" \
+                            f") " \
+                            f"VALUES(" \
+                            f"'{crawl_data['name']}', " \
+                            f"'{crawl_data['avatar']}', " \
+                            f"'{crawl_data['country_of_birth']}', " \
+                            f"'{crawl_data['place_of_birth']}', " \
+                            f"'{crawl_data['date_of_birth']}', " \
+                            f"'{crawl_data['job']}', " \
+                            f"'{','.join(crawl_data['languages'])}', " \
+                            f"'{crawl_data['political_party']}', " \
+                            f"'{crawl_data['email']}', " \
+                            f"'{str(datetime.datetime.now())}', " \
+                            f"'{str(datetime.datetime.now())}'" \
+                            f")"
+        conn.execute(execution_command)
+        conn.commit()

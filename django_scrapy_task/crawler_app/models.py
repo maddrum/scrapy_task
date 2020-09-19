@@ -12,4 +12,7 @@ class ScrapedData(models.Model):
     political_party = models.CharField(max_length=255)
     email = models.EmailField()
     created_on = models.DateTimeField(auto_now_add=True)
-    edited_on = models.DateField(auto_now=True)
+    edited_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
