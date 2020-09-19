@@ -5,10 +5,11 @@ from api import views
 
 app_name = 'api'
 router = DefaultRouter()
-# router.register('user_notes', views.UserPrivateNotesView, base_name='user_private_notes')
-
+router.register('list', views.ListDataView, basename='list_all_data')
+router.register('mp', views.ListDataView, basename='list_single_data')
+router.register('search', views.SearchNameView, basename='search_name')
 # rest framework schema
-rest_schema_view = get_schema_view(title="PIGS INFO API")
+rest_schema_view = get_schema_view(title="PIGS CATALOGUE API")
 
 urlpatterns = [
     url(r'', include(router.urls)),
