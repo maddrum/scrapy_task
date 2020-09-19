@@ -100,7 +100,7 @@ class PigsSpider(scrapy.Spider):
 
     def popup_database(self, crawl_data):
         """
-        Writes scraped data to databse. Check if data exists and skips that record.
+        Writes scraped data to database. Check if data exists and skips that record.
         :param crawl_data: - result of scraping
         :return: nothing
         """
