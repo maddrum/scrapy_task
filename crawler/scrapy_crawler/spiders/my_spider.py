@@ -99,6 +99,12 @@ class PigsSpider(scrapy.Spider):
         yield result_data
 
     def popup_database(self, crawl_data):
+        """
+        Writes scraped data to databse. Check if data exists and skips that record.
+        :param crawl_data: - result of scraping
+        :return: nothing
+        """
+
         # check if already crawled and skip writing the record
         check_database = conn.execute(f"SELECT name FROM crawler_app_scrapeddata WHERE name='{crawl_data['name']}'")
         if check_database.fetchone():
