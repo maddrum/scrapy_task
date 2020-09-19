@@ -11,7 +11,7 @@ router.register('search', views.SearchNameView, basename='search_name')
 router.register('login', views.LoginUser, basename='login')
 
 # rest framework schema
-rest_schema_view = get_schema_view(title="PIGS CATALOGUE API")
+rest_schema_view = get_schema_view(title="MP CATALOGUE API")
 
 urlpatterns = [
     url(r'', include(router.urls)),

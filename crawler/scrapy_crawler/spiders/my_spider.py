@@ -14,17 +14,17 @@ database_path = os.path.join(database_path, 'django_scrapy_task', 'db.sqlite3')
 conn = sqlite3.connect(database_path)
 
 
-class PigsSpider(scrapy.Spider):
-    name = 'pigs'
+class BulgarianMPSpider(scrapy.Spider):
+    name = 'mp'
     start_urls = [
         'https://parliament.bg/bg/MP/',
     ]
 
     def parse(self, response, **kwargs):
         sub_info = response.css('.MPBlock > div > div > a')
-        yield from response.follow_all(sub_info, self.parse_pig)
+        yield from response.follow_all(sub_info, self.parse_mp)
 
-    def parse_pig(self, response):
+    def parse_mp(self, response):
         """Returns:
         {
             'name': Full name /string/,
