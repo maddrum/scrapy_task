@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crawler_app',
+    'api',
     'rest_framework',
 ]
 
