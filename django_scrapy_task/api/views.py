@@ -14,6 +14,9 @@ class ResultsSetPagination(PageNumberPagination):
 
 
 class ListDataView(viewsets.ModelViewSet):
+    """
+    Provides summarized list data for all records or for single record
+    """
     serializer_class = BaseDataSerializer
     http_method_names = ['get', ]
     queryset = ScrapedData.objects.all()
@@ -33,6 +36,7 @@ class ListDataView(viewsets.ModelViewSet):
 
 
 class SearchNameView(viewsets.ViewSet):
+    """Search by name"""
 
     def create(self, request):
         if 'name' not in request.POST:
