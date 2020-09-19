@@ -3,14 +3,26 @@ import datetime
 from api.serializers import BaseDataSerializer
 from crawler_app.models import ScrapedData
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 class ResultsSetPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 240
+
+
+class LoginUser(viewsets.ViewSet):
+    """Shows user token"""
+    serializer_class = AuthTokenSerializer
+
+    def create(self, request, *args, **kwargs):
+        return ObtainAuthToken().post(request)
 
 
 class ListDataView(viewsets.ModelViewSet):
@@ -33,6 +45,11 @@ class ListDataView(viewsets.ModelViewSet):
             print(criteria_date)
             qs = qs.filter(date_of_birth=criteria_date)
         return qs
+
+
+class LoggedOnlyListDataView(ListDataView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class SearchNameView(viewsets.ViewSet):
