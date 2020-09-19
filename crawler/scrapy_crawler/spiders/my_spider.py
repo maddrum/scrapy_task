@@ -3,6 +3,7 @@ import re
 import datetime
 import sqlite3
 import os
+import jsonschema
 
 # get the database
 database_path = os.path.dirname(__file__)
@@ -95,6 +96,10 @@ class BulgarianMPSpider(scrapy.Spider):
             'political_party': elected_from,
             'email': email,
         }
+        json_test = self.validate_schema(result_data)
+        if not json_test:
+            print(f"[NOTIFICATION] JSON SCHEMA validation FAILED for {result_data['name']}, SKIPPING...")
+            return
         self.popup_database(result_data)
         yield result_data
 
@@ -138,3 +143,21 @@ class BulgarianMPSpider(scrapy.Spider):
                             f")"
         conn.execute(execution_command)
         conn.commit()
+
+    def validate_schema(self, crawl_data):
+        schema = {
+            "name": {"type": "string"},
+            "avatar": {"type": "string"},
+            "country_of_birth": {"type": "string"},
+            "place_of_birth": {"type": "string"},
+            "date_of_birth": {"type": "string"},
+            "languages": {"type": ["array", "string"]},
+            "job": {"type": "string"},
+            "political_party": {"type": "string"},
+            'email': {"type": "string"},
+        }
+        try:
+            jsonschema.validate(instance=crawl_data, schema=schema)
+        except jsonschema.exceptions.ValidationError:
+            return False
+        return True
