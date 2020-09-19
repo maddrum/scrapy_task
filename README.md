@@ -11,6 +11,7 @@ In order to use this you should:
   3. Migrate the database with "python manage.py migrate"
   4. Create a superuser for the Django Admin using "python manage.py createsuperuser".
   5. Start the django app with "python manage.py runserver".
+  
     a. optional: Add users to /admin if needed.
     
   -------- 
