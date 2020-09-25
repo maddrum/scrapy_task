@@ -4,6 +4,8 @@ import datetime
 import sqlite3
 import os
 import jsonschema
+from urllib import request
+import xml.etree.ElementTree as ET
 
 # get the database
 database_path = os.path.dirname(__file__)
@@ -39,6 +41,14 @@ class BulgarianMPSpider(scrapy.Spider):
             'email': E-Mail /email/,
         }
         """
+        # xml_parse
+        mp_id = response.url.split('/')[-1]
+        xml_address = 'https://parliament.bg/export.php/bg/xml/MP/' + mp_id
+        xml_str = request.urlopen(xml_address).read()
+        xml_root = ET.fromstring(xml_str)
+        for element in xml_root.findall('Profile'):
+            print(element)
+            print(element.tag, element.attrib)
         # get the name
         raw_name_string = str(response.css('.MProwD').get())
         name_pattern = r'</?(\w+| |=|\")+>+'
