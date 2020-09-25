@@ -5,7 +5,8 @@ import sqlite3
 import os
 import jsonschema
 from urllib import request
-import xml.etree.ElementTree as ET
+import xmltodict
+from xml.parsers.expat import ExpatError
 
 # get the database
 database_path = os.path.dirname(__file__)
@@ -45,55 +46,51 @@ class BulgarianMPSpider(scrapy.Spider):
         mp_id = response.url.split('/')[-1]
         xml_address = 'https://parliament.bg/export.php/bg/xml/MP/' + mp_id
         xml_str = request.urlopen(xml_address).read()
-        xml_root = ET.fromstring(xml_str)
-        for element in xml_root.findall('Profile'):
-            print(element)
-            print(element.tag, element.attrib)
+        try:
+            xml_dict = xmltodict.parse(xml_str)
+        except ExpatError:
+            return
+        profile_dict = xml_dict['schema']['Profile']
         # get the name
-        raw_name_string = str(response.css('.MProwD').get())
-        name_pattern = r'</?(\w+| |=|\")+>+'
-        processed_name = re.sub(name_pattern, '', raw_name_string).strip()
+        first_name = profile_dict['Names']['FirstName']['@value']
+        sir_name = profile_dict['Names']['SirName']['@value']
+        last_name = profile_dict['Names']['FamilyName']['@value']
+        processed_name = f'{first_name} {sir_name} {last_name}'
         # get avatar url
         try:
             avatar_address = 'https://parliament.bg' + response.css('.MPBlock_columns2 > img::attr(src)').get()
-        except:
-            avatar_address = 'No data'
-        # initial information cleanup
-        info_raw = str(response.css('.frontList').get())
-        info_raw = info_raw.replace('</li>', '')
-        info_raw = info_raw.replace('</ul>', '')
-        info_raw = info_raw.split('<li>')
-        info_raw = info_raw[1:]
-        if len(info_raw) == 0:
+        except TypeError:
             return
-        # checks for language and job listed and fill in
-        if not info_raw[1].split(':')[0].strip() == 'Професия':
-            info_raw.insert(1, 'No data')
-        if not info_raw[2].split(':')[0].strip() == 'Езици':
-            info_raw.insert(2, 'No data')
         # place and date of birth
-        place_of_birth_raw = info_raw[0].split(':')[-1].split(',')
-        country_of_birth = place_of_birth_raw[-1].strip()
-        place_and_date_of_birth = place_of_birth_raw[0].strip()
-        # using re to get the date and and the place
-        date_regex = r'\d{2}\/\d{2}\/\d{4}'
-        date_of_birth_str = re.search(date_regex, place_and_date_of_birth).group(0)
-        place_of_birth = re.sub(date_regex, '', place_and_date_of_birth).strip()
+        place_of_birth_raw = profile_dict['PlaceOfBirth']['@value']
+        date_of_birth_str = profile_dict['DateOfBirth']['@value']
+        place_of_birth_raw = place_of_birth_raw.split(',')
         date_of_birth = datetime.datetime.strptime(date_of_birth_str, '%d/%m/%Y').date()
+        place_of_birth = place_of_birth_raw[0].strip()
+        country_of_birth = place_of_birth_raw[1].strip()
         # job
-        job = info_raw[1].split(':')[-1].replace(';', ' ').strip()
+        try:
+            job = profile_dict['Profession']['Profession']['@value']
+        except TypeError:
+            job = 'No data'
         # languages
-        languages = info_raw[2].split(':')[-1].replace(';', ',').strip()
-        if languages[-1] == ',':
-            languages = languages[:-1]
-        languages = languages.split(",")
+        try:
+            languages_raw = profile_dict['Language']['Language']
+        except TypeError:
+            languages_raw = {}
+            languages_raw['@value'] = 'No data'
+        languages = []
+        for item in languages_raw:
+            if isinstance(item, str):
+                languages.append(languages_raw['@value'])
+            else:
+                languages = [item['@value'] for item in languages_raw]
         # election party
-        elected_from = info_raw[3].split(':')[-1]
-        elected_from = elected_from.replace(';', '').strip()
+        elected_from = profile_dict['PoliticalForce']['@value']
         percentage_regex = r'\d\d?.\d{2}%'
         elected_from = re.sub(percentage_regex, '', elected_from).strip()
         # email
-        email = info_raw[-1].split('mailto:')[1].split("\"")[0].strip()
+        email = profile_dict['E-mail']['@value']
         # result data
         result_data = {
             'name': processed_name,
